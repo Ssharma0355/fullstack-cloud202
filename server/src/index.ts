@@ -48,9 +48,6 @@ app.get("/api/users", async (_req: any, res: { status: (arg0: number) => { (): a
   }
 });
 
-// Start the server end
-//local
-//local
 app.listen(PORT, () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
