@@ -18,14 +18,11 @@ app.use(cors({ origin: "*" })); // Allow all origins
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
-// API Routes
+// API Route
 app.post("/api/user", async (req, res) => {
   try {
     const userData = new User(req.body);
@@ -55,3 +52,4 @@ app.get("/api/users", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
