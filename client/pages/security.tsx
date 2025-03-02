@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 
 const Security: React.FC = () => {
+  const BASE_URL = process.env.BASE_URL;
   const router = useRouter();
 const handleSubmit = async () => {
   const basicConfig = JSON.parse(localStorage.getItem("basicConfig") || "{}");
@@ -33,7 +34,7 @@ const handleSubmit = async () => {
 
  const fetchUser = async () => {
    try {
-     const res = await fetch("http://localhost:8080/api/users", {
+     const res = await fetch(`${BASE_URL}/api/users`, {
        method: "GET",
        headers: {
          "Content-Type": "application/json",
@@ -53,7 +54,7 @@ const handleSubmit = async () => {
  };
 
   try {
-    const response = await fetch("/api/user", {
+    const response = await fetch(`${BASE_URL}/api/user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

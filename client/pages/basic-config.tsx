@@ -22,6 +22,7 @@ type User = {
 };
 
 const BasicConfig: React.FC = () => {
+   const BASE_URL = process.env.BASE_URL;
   const {
     register,
     handleSubmit,
@@ -36,7 +37,7 @@ const BasicConfig: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("/api/users");
+        const res = await fetch(`${BASE_URL}/api/users`);
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
