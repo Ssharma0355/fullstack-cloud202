@@ -29,10 +29,14 @@ app.post("/api/user", async (req: { body: any; }, res: { status: (arg0: number) 
     const savedUser = await userData.save();
     res.status(201).json({ message: "User saved", data: savedUser });
   } catch (error) {
-    console.error("Error saving user:", error.message);
+    if (error instanceof Error) {
+      console.error("Error saving user:", error.message);
+    } else {
+      console.error("Error saving user:", error);
+    }
     res
       .status(500)
-      .json({ message: "Error saving user", error: error.message });
+      .json({ message: "Error saving user", error: error instanceof Error ? error.message : "Unknown error" });
   }
 });
 
@@ -41,10 +45,14 @@ app.get("/api/users", async (_req: any, res: { status: (arg0: number) => { (): a
     const users = await User.find();
     res.status(200).json({ message: "Users fetched", data: users });
   } catch (error) {
-    console.error("Error fetching users:", error.message);
+    if (error instanceof Error) {
+      console.error("Error fetching users:", error.message);
+    } else {
+      console.error("Error fetching users:", error);
+    }
     res
       .status(500)
-      .json({ message: "Error fetching users", error: error.message });
+      .json({ message: "Error fetching users", error: error instanceof Error ? error.message : "Unknown error" });
   }
 });
 
