@@ -14,17 +14,17 @@ app.use(cors());
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error("MongoDB Connection Error:", err));
 
 // API Routes
 app.post("/api/user", async (req, res) => {
   try {
     const userData = new User(req.body);
     const savedUser = await userData.save();
-    res.status(201).json({ message: "✅ User saved", data: savedUser });
+    res.status(201).json({ message: "User saved", data: savedUser });
   } catch (error) {
-    console.error("❌ Error saving user:", error.message);
+    console.error("Error saving user:", error.message);
     res
       .status(500)
       .json({ message: "Error saving user", error: error.message });
@@ -34,13 +34,13 @@ app.post("/api/user", async (req, res) => {
 app.get("/api/users", async (req, res) => {
   try {
     const users = await User.find();
-    res.status(200).json({ message: "✅ Users fetched", data: users });
+    res.status(200).json({ message: "Users fetched", data: users });
   } catch (error) {
-    console.error("❌ Error fetching users:", error.message);
+    console.error("Error fetching users:", error.message);
     res
       .status(500)
       .json({ message: "Error fetching users", error: error.message });
   }
 });
 
-module.exports = app; // ✅ Exporting app for Vercel
+module.exports = app; 
