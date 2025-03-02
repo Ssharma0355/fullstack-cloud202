@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 const Security: React.FC = () => {
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
 const handleSubmit = async () => {
   const basicConfig = JSON.parse(localStorage.getItem("basicConfig") || "{}");

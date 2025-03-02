@@ -22,7 +22,7 @@ type User = {
 };
 
 const BasicConfig: React.FC = () => {
-   const BASE_URL = process.env.BASE_URL;
+   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
   const {
     register,
     handleSubmit,
