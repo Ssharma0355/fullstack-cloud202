@@ -36,7 +36,7 @@ const BasicConfig: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/users");
+        const res = await fetch("/api/users");
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
