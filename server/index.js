@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const User = require("./models/userModel");
 require("dotenv").config();
@@ -8,12 +7,15 @@ require("dotenv").config();
 const app = express();
 
 // Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
@@ -43,4 +45,5 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-module.exports = app; 
+// Export the Express API
+module.exports = app;
