@@ -14,12 +14,10 @@ app.use(cors());
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error("MongoDB Connection Error:", err));
+
 
 // **POST** - Save a new user
 app.post("/api/user", async (req, res) => {
@@ -81,4 +79,4 @@ app.get("/api/users", async (req, res) => {
 
 // Start Server
 const PORT = process.env.PORT || 8080;
-http.listen(PORT, () => console.log(`🚀 Server running on PORT ${PORT}`));
+http.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
