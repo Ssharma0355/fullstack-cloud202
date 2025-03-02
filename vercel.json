@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "server/index.js",
+            "src": "server/src/index.ts",
             "use": "@vercel/node"
         },
         {
@@ -13,7 +13,7 @@
     "routes": [
         {
             "src": "/server/(.*)",
-            "dest": "server/index.js"
+            "dest": "server/src/index.ts"
         }
     ],
     "env": {
