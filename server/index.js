@@ -1,12 +1,11 @@
-require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const User = require("./models/userModel");
+require("dotenv").config();
 
 const app = express();
-const http = require("http").Server(app);
 
 // Middleware
 app.use(bodyParser.json());
@@ -18,58 +17,23 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
-
-// **POST** - Save a new user
+// API Routes
 app.post("/api/user", async (req, res) => {
   try {
-    const {
-      appname,
-      appdescription,
-      knowledgename,
-      knowledgedescription,
-      pattern,
-      embeddings,
-      metrics,
-      chuncking,
-      vectorDb,
-    } = req.body;
-
-    // Validation
-    if (
-      !appname ||
-      !appdescription ||
-      !knowledgename ||
-      !knowledgedescription ||
-      !pattern ||
-      !embeddings ||
-      !metrics ||
-      !chuncking ||
-      !vectorDb
-    ) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
-
-    // Save data to MongoDB
     const userData = new User(req.body);
     const savedUser = await userData.save();
-
-    res
-      .status(201)
-      .json({ message: "User data saved successfully", data: savedUser });
+    res.status(201).json({ message: "User saved", data: savedUser });
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Error saving user data", error: error.message });
+      .json({ message: "Error saving user", error: error.message });
   }
 });
 
-// **GET** - Retrieve all users
 app.get("/api/users", async (req, res) => {
   try {
     const users = await User.find();
-    res
-      .status(200)
-      .json({ message: "Users fetched successfully", data: users });
+    res.status(200).json({ message: "Users fetched", data: users });
   } catch (error) {
     res
       .status(500)
@@ -77,6 +41,4 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-// Start Server
-const PORT = process.env.PORT || 8080;
-http.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
+module.exports = app; // Export app for Vercel
