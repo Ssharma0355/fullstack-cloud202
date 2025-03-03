@@ -67,7 +67,7 @@ const BasicConfig: React.FC = () => {
       </div>
 
       {/* App Name Field */}
-      <div className="border border-gray-300 rounded-lg shadow-md">
+      <div className="p-4 border border-gray-300 rounded-lg shadow-md">
         <div className="flex flex-col">
           <label htmlFor="appname" className="font-medium">
             App Name
