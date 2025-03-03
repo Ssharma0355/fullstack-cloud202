@@ -30,7 +30,7 @@ const RAG: React.FC = () => {
     reset();
   };
   return (
-    <div className="p-1 border border-gray-300 rounded-lg shadow-md">
+    <div className="p-4 border border-gray-300 rounded-lg shadow-md">
       {/* Form Section */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Header */}
