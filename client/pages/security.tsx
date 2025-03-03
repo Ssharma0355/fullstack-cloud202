@@ -78,7 +78,7 @@ const handleSubmit = async () => {
 };
 
   return (
-    <div className="p-4">
+    <div className="p-4 border border-gray-300 rounded-lg shadow-md">
       {/* Form Section */}
       <form className="space-y-4">
         {/* Header */}
