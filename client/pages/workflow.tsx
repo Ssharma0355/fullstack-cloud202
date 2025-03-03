@@ -4,7 +4,7 @@ const WorkFlow: React.FC = () => {
   const router = useRouter();
 
   return (
-    <div className="p-4">
+    <div className="p-1 border border-gray-300 rounded-lg shadow-md">
       {/* Form Section */}
       <form className="space-y-4">
         {/* Header */}
@@ -28,7 +28,6 @@ const WorkFlow: React.FC = () => {
             type="button"
             className={"bg-[#3C7069] px-4 py-2 rounded text-white "}
             onClick={() => router.push("/security")}
-            
           >
             Next
           </button>
