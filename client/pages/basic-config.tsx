@@ -67,69 +67,72 @@ const BasicConfig: React.FC = () => {
       </div>
 
       {/* App Name Field */}
-      <div className="flex flex-col">
-        <label htmlFor="appname" className="font-medium">
-          App Name
-        </label>
-        <input
-          id="appname"
-          type="text"
-          {...register("appname", { required: "App Name is required" })}
-          className="border p-2 rounded"
-        />
-        {errors.appname && (
-          <span className="text-red-500">{errors.appname.message}</span>
-        )}
-      </div>
+      <div className="border border-gray-300 rounded-lg shadow-md">
+        <div className="flex flex-col">
+          <label htmlFor="appname" className="font-medium">
+            App Name
+          </label>
+          <input
+            id="appname"
+            type="text"
+            {...register("appname", { required: "App Name is required" })}
+            className="border p-2 rounded"
+          />
+          {errors.appname && (
+            <span className="text-red-500">{errors.appname.message}</span>
+          )}
+        </div>
 
-      {/* Description Field */}
-      <div className="flex flex-col">
-        <label htmlFor="description" className="font-medium">
-          Description
-        </label>
-        <textarea
-          id="description"
-          {...register("description", { required: "Description is required" })}
-          className="border p-2 rounded"
-        />
-        {errors.description && (
-          <span className="text-red-500">{errors.description.message}</span>
-        )}
-      </div>
+        {/* Description Field */}
+        <div className="flex flex-col">
+          <label htmlFor="description" className="font-medium">
+            Description
+          </label>
+          <textarea
+            id="description"
+            {...register("description", {
+              required: "Description is required",
+            })}
+            className="border p-2 rounded"
+          />
+          {errors.description && (
+            <span className="text-red-500">{errors.description.message}</span>
+          )}
+        </div>
 
-      {/* Modal Buttons */}
-      <div className="flex space-x-3">
+        {/* Modal Buttons */}
+        <div className="flex space-x-3">
+          <button
+            type="button"
+            onClick={() => setOpenModal("query")}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Open Query Modal
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpenModal("warning")}
+            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+          >
+            Open Warning Modal
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpenModal("success")}
+            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Open Success Modal
+          </button>
+        </div>
+
+        {/* Submit Button */}
         <button
-          type="button"
-          onClick={() => setOpenModal("query")}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          type="submit"
+          className="bg-[#3C7069] text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
         >
-          Open Query Modal
-        </button>
-        <button
-          type="button"
-          onClick={() => setOpenModal("warning")}
-          className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-        >
-          Open Warning Modal
-        </button>
-        <button
-          type="button"
-          onClick={() => setOpenModal("success")}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          Open Success Modal
+          Next
         </button>
       </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="bg-[#3C7069] text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
-      >
-        Next
-      </button>
-      <hr />
 
       {/* User List Table */}
       <div className="mt-6">
