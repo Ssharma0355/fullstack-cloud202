@@ -60,10 +60,7 @@ const BasicConfig: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 p-4"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-4">
       {/* Header */}
       <div className="bg-[#3C7069] text-white p-3 rounded-t-lg">
         <h1 className="text-lg font-bold">Basic Configuration</h1>
@@ -128,7 +125,7 @@ const BasicConfig: React.FC = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
+        className="bg-[#3C7069] text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
       >
         Next
       </button>
