@@ -12,7 +12,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const User = require("../src/models/userModel");
+const User = require("./models/userModel");
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000; // Define PORT for API testing
