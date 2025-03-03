@@ -62,7 +62,7 @@ const BasicConfig: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 p-4 border border-black rounded-lg border-green-800"
+      className="space-y-4 p-4"
     >
       {/* Header */}
       <div className="bg-[#3C7069] text-white p-3 rounded-t-lg">
