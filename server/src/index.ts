@@ -18,9 +18,13 @@ app.use(cors({ origin: "*" })); // Allow all origins
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err: any) => console.error("MongoDB Connection Error:", err));
+    .connect(process.env.MONGODB_URI, { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true 
+    })
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err: any) => console.error("MongoDB Connection Error:", err));
+
 
 // API Route
 app.post("/api/user", async (req: { body: any; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; data?: any; error?: any; }): void; new(): any; }; }; }) => {
